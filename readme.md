@@ -5,6 +5,7 @@
     - Name the project
     - Select data (from a list of available API) to display on the map.
     - Build some analysis (query, selected features, change map)
+    - or user can add his/her own esri API
     - Print/save map as image
     - Save project
 3. user want to edit a project
@@ -35,7 +36,8 @@ project schema{
   - description: string
   - comment:string  (if edit, should leave comment
   - ersi webservice id: integer // many
-
+  - user_is: integer
+  - Category: string
 }
 
 Esri webservices schema  {
@@ -47,9 +49,11 @@ Esri webservices schema  {
   - project id: integer // many
 }
 
+#All users can see this project
 shared project schema{
   - username: string
   - name: string
+  - project_name: string
   - projects_id: integer  // project id
   - user_id; integer
 }
@@ -59,6 +63,7 @@ shared project schema{
 Back End:      	
   - Ruby on Rails, Postgresql
   - Argis API webservices
+  - AJAX
   - JWT authentication
 
 Front End
@@ -67,6 +72,8 @@ Front End
   - HTML
   - JavaScript
   - Jquery
+  - Boostrap css
+
 
 
 #=========== End =======================
