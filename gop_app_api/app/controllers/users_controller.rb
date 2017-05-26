@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     user = User.find_by(username: params[:user][:username])
     if user && user.authenticate(params[:user][:password])
       token = create_token(user.id, user.username)
-      render json: {status: 200, token: token, user: user}
+      render json: {status: 200, token: token, user: user, message:"sucessful login"}
     else
       render json: {status: 401, message: "Unauthorized"}
     end
@@ -29,12 +29,16 @@ end
 
   # POST /users
   def create
-    @user = User.new(user_params)
-
-    if @user.save
-      render json: @user, status: :created, location: @user
+    createdUser = User.find_by_username(params[:username])
+    if !createdUser
+      @user = User.new(user_params)
+      if @user.save
+        render json: @user, status: :created, location: @user
+      else
+        render json: @user.errors, status: :unprocessable_entity
+      end
     else
-      render json: @user.errors, status: :unprocessable_entity
+      render json: {status: 204, message: "username is already taken"}
     end
   end
 
