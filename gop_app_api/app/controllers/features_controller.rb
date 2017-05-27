@@ -10,7 +10,8 @@ class FeaturesController < ApplicationController
 
   # GET /features/1
   def show
-    render json: @features.to_json(include: :projects)
+    puts "show feature index number"
+    render json: @feature
   end
 
   # POST /features

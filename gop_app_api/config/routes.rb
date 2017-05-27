@@ -15,5 +15,10 @@ Rails.application.routes.draw do
   resources :user do
     resource :projects
   end
+
+  resources :project do
+    puts "say something here"
+    resource :features
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
