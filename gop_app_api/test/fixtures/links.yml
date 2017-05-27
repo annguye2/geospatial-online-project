@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  feature_id: one
+  project_id: one
+  creator: MyString
+
+two:
+  feature_id: two
+  project_id: two
+  creator: MyString

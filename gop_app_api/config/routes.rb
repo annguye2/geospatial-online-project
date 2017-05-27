@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :linktables
+  resources :links
   root 'welcome#index'
   resources :projects
   resources :features

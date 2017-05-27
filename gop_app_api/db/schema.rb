@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170526011750) do
+ActiveRecord::Schema.define(version: 20170526220559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,17 @@ ActiveRecord::Schema.define(version: 20170526011750) do
     t.string   "data_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "linktables", force: :cascade do |t|
+    t.integer  "feature_id"
+    t.integer  "project_id"
+    t.string   "creator"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.index ["feature_id"], name: "index_linktables_on_feature_id", using: :btree
+    t.index ["project_id"], name: "index_linktables_on_project_id", using: :btree
   end
 
   create_table "projects", force: :cascade do |t|
@@ -45,4 +56,6 @@ ActiveRecord::Schema.define(version: 20170526011750) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "linktables", "features"
+  add_foreign_key "linktables", "projects"
 end

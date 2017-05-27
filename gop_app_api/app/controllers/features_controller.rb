@@ -5,12 +5,12 @@ class FeaturesController < ApplicationController
   def index
     @features = Feature.all
 
-    render json: @features
+    render json: @features.to_json(include: :projects)
   end
 
   # GET /features/1
   def show
-    render json: @feature
+    render json: @features.to_json(include: :projects)
   end
 
   # POST /features
