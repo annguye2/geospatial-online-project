@@ -7,8 +7,10 @@ class UsersController < ApplicationController
  def login
     user = User.find_by(username: params[:user][:username])
     if user && user.authenticate(params[:user][:password])
+      #projects = Project.where(user_id: user.id) # worked
+      projects = user.projects.all  # get all projects from this userthis also worked
       token = create_token(user.id, user.username)
-      render json: {status: 200, token: token, user: user, message:"sucessful login"}
+      render json: {status: 200, token: token, user: user, projects: projects,  message:"sucessful login"}
     else
       render json: {status: 401, message: "Unauthorized"}
     end

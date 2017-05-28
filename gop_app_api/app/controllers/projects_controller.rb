@@ -3,6 +3,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects
   def index
+      puts ' am i here?'
     @projects = Project.all
 
     render json: @projects.to_json(include: :features)
@@ -10,6 +11,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1
   def show
+    puts " here I am "
     render json: @project.to_json(include: :features)
   end
 
