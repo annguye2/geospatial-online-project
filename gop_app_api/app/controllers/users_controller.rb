@@ -25,8 +25,11 @@ end
 
   # GET /users/1
   def show
-    # render json: @user
-    render json: get_current_user
+
+    projects = @user.projects.all
+    render json: { user: @user, projects: projects, message: "successful"}
+    puts 'Get user informaion'
+    # render json: get_current_user
   end
 
   # POST /users
