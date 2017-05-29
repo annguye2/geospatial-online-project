@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170526220559) do
+ActiveRecord::Schema.define(version: 20170529150119) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,9 +40,9 @@ ActiveRecord::Schema.define(version: 20170526220559) do
     t.string   "comment"
     t.string   "feature_url"
     t.integer  "user_id"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.boolean  "is_shared",   default: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.boolean  "shared"
   end
 
   create_table "users", force: :cascade do |t|
